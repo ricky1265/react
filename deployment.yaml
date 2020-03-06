@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react
+  labels:
+    app: react
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: react
+      labels:
+        app: react
+    spec:
+      containers:
+        - name: react
+          image: mohammedzeeshan/react
+          imagePullPolicy: Always
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: react
+      
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react
+spec:
+  selector:
+    app: react
+  ports:
+    - port: 3000
+  type: ClusterIP
