@@ -1,4 +1,4 @@
 FROM node
 WORKDIR /app
-COPY . /app
+COPY / /app
 CMD ["npm", "start"]
